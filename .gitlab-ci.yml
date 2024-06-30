@@ -1,0 +1,15 @@
+image: ubuntu:24.04
+
+stages:
+  - passmark
+
+ubuntu24.04:
+  stage: passmark
+  script:
+    - ./passmark.sh -i
+
+ubuntu22.04:
+  stage: passmark
+  image: ubuntu:22.04
+  script:
+    - ./passmark.sh -i

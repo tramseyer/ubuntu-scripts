@@ -1,0 +1,13 @@
+#cloud-config
+
+write_files:
+  - path: /etc/apparmor.d/bitbake
+    content: |
+      abi <abi/4.0>,
+      include <tunables/global>
+      /**/bitbake/bin/bitbake-worker flags=(unconfined) {
+          userns,
+      }
+
+runcmd:
+  - apparmor_parser -r /etc/apparmor.d/bitbake

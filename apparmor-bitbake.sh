@@ -3,7 +3,7 @@
 cat > /etc/apparmor.d/bitbake <<-EOF
 abi <abi/4.0>,
 include <tunables/global>
-/**/bitbake/bin/bitbake-worker flags=(unconfined) {
+/**/bitbake/bin/bitbake flags=(unconfined) {
     userns,
 }
 EOF

@@ -18,10 +18,10 @@ cd pt_linux
 PT_LINUX_ARCH=""
 
 if dpkg --print-architecture | grep amd64; then
-    wget -nv --backups=1 http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libncursesw5_6.4-2_amd64.deb
-    wget -nv --backups=1 http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.4-2_amd64.deb
-    dpkg-deb -xv libncursesw5_6.4-2_amd64.deb libncursesw5
-    dpkg-deb -xv libtinfo5_6.4-2_amd64.deb libtinfo5
+    wget -nv --backups=1 http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libncursesw5_6.3-2ubuntu0.1_amd64.deb
+    wget -nv --backups=1 http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.3-2_amd64.deb
+    dpkg-deb -xv libncursesw5_6.3-2ubuntu0.1_amd64.deb libncursesw5
+    dpkg-deb -xv libtinfo5_6.3-2_amd64.deb libtinfo5
     mv libncursesw5/lib/x86_64-linux-gnu/libncursesw.so.5.9 libncurses.so.5
     mv libtinfo5/lib/x86_64-linux-gnu/libtinfo.so.5.9 libtinfo.so.5
     PT_LINUX_ARCH="x64"
@@ -34,6 +34,7 @@ elif dpkg --print-architecture | grep arm64; then
     mv libtinfo5/lib/aarch64-linux-gnu/libtinfo.so.5.9 libtinfo.so.5
     PT_LINUX_ARCH="arm64"
 fi
+
 
 if [ ! -z "$PT_LINUX_ARCH" ]; then
     wget -nv --backups=1 "https://www.passmark.com/downloads/pt_linux_$PT_LINUX_ARCH.zip"

@@ -18,16 +18,16 @@ cd pt_linux
 PT_LINUX_ARCH=""
 
 if dpkg --print-architecture | grep amd64; then
-    wget -nv --backups=1 http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libncursesw5_6.3-2ubuntu0.1_amd64.deb
-    wget -nv --backups=1 http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.3-2_amd64.deb
+    wget -nv --backups=0 http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libncursesw5_6.3-2ubuntu0.1_amd64.deb
+    wget -nv --backups=0 http://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.3-2_amd64.deb
     dpkg-deb -xv libncursesw5_6.3-2ubuntu0.1_amd64.deb libncursesw5
     dpkg-deb -xv libtinfo5_6.3-2_amd64.deb libtinfo5
     mv libncursesw5/lib/x86_64-linux-gnu/libncursesw.so.5.9 libncurses.so.5
     mv libtinfo5/lib/x86_64-linux-gnu/libtinfo.so.5.9 libtinfo.so.5
     PT_LINUX_ARCH="x86-64"
 elif dpkg --print-architecture | grep arm64; then
-    wget -nv --backups=1 http://ports.ubuntu.com/pool/main/n/ncurses/libncursesw5_6.1-1ubuntu1_arm64.deb
-    wget -nv --backups=1 http://ports.ubuntu.com/pool/main/n/ncurses/libtinfo5_6.1-1ubuntu1_arm64.deb
+    wget -nv --backups=0 http://ports.ubuntu.com/pool/main/n/ncurses/libncursesw5_6.1-1ubuntu1_arm64.deb
+    wget -nv --backups=0 http://ports.ubuntu.com/pool/main/n/ncurses/libtinfo5_6.1-1ubuntu1_arm64.deb
     dpkg-deb -xv libncursesw5_6.1-1ubuntu1_arm64.deb libncursesw5
     dpkg-deb -xv libtinfo5_6.1-1ubuntu1_arm64.deb libtinfo5
     mv libncursesw5/lib/aarch64-linux-gnu/libncursesw.so.5.9 libncurses.so.5
@@ -37,7 +37,7 @@ fi
 
 
 if [ ! -z "$PT_LINUX_ARCH" ]; then
-    wget -nv --backups=1 "https://www.passmark.com/downloads/PerformanceTest_Linux_$PT_LINUX_ARCH.zip"
+    wget -nv --backups=0 --user-agent="Mozilla/5.0 (X11; Linux x86_64; rv:108.0) Gecko/20100101 Firefox/108.0" "https://www.passmark.com/downloads/PerformanceTest_Linux_$PT_LINUX_ARCH.zip"
     python3 -c 'import sys; from zipfile import PyZipFile; PyZipFile(sys.argv[1]).extractall()' "PerformanceTest_Linux_$PT_LINUX_ARCH.zip"
     mv "PerformanceTest/PerformanceTest_Linux_$PT_LINUX_ARCH" .
     chmod a+x "PerformanceTest_Linux_$PT_LINUX_ARCH"

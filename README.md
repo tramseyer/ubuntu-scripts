@@ -1,5 +1,5 @@
 # Debloating
-Helper script to cleanup fresh Ubuntu 22.04 and 24.04 servers:
+Helper script to cleanup fresh Ubuntu 22.04, 24.04 and 26.04 servers:
 ```sh
 wget -qO- https://raw.githubusercontent.com/tramseyer/ubuntu-scripts/master/setup.sh | bash
 ```

@@ -1,4 +1,5 @@
-#!/bin/bash -eux
+#!/bin/bash
+set -euxo pipefail
 export DEBIAN_FRONTEND=noninteractive
 
 for arg in "$@"
